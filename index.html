@@ -2,60 +2,92 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>موقعي</title>
+  <title>E-Football Tournament</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0f172a;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: white;
       text-align: center;
     }
+
     header {
-      background: #1e293b;
-      padding: 20px;
-      font-size: 24px;
+      padding: 30px;
+      background: rgba(0,0,0,0.4);
+      font-size: 28px;
       font-weight: bold;
     }
+
     .container {
-      padding: 40px;
+      padding: 40px 20px;
     }
+
     .card {
-      background: #020617;
-      padding: 20px;
-      margin: 20px auto;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 30px;
       max-width: 400px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,.5);
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
     button {
-      padding: 10px 20px;
+      background: #1abc9c;
       border: none;
-      background: #22c55e;
-      color: black;
+      padding: 12px 25px;
       font-size: 16px;
-      border-radius: 5px;
+      border-radius: 25px;
       cursor: pointer;
+      transition: 0.3s;
     }
+
     button:hover {
-      background: #16a34a;
+      background: #16a085;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      opacity: 0.7;
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  ⚽ eFootball Tournament
-</header>
+  <header>
+    ⚽ E-Football Tournament
+  </header>
 
-<div class="container">
-  <div class="card">
-    <h2>مرحبا بك</h2>
-    <p>هذا موقع بطولات eFootball</p>
-    <button>دخول</button>
+  <div class="container">
+    <div class="card">
+      <h2>مرحبا بيك 👋</h2>
+      <p>
+        هذا موقع لإدارة بطولات eFootball  
+        تسجيل اللاعبين، تنظيم المباريات، وتتبع النتائج
+      </p>
+      <button onclick="alert('قريباً سيتم فتح التسجيل')">
+        تسجيل الآن
+      </button>
+    </div>
   </div>
-</div>
+
+  <footer>
+    © 2025 - E-Football Tournament
+  </footer>
 
 </body>
 </html>
