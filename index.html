@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>E-Football Tournament</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,84 +10,77 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
-      text-align: center;
-    }
-
-    header {
-      padding: 30px;
-      background: rgba(0,0,0,0.4);
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .container {
-      padding: 40px 20px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
     .card {
-      background: rgba(255,255,255,0.1);
-      border-radius: 15px;
+      background: rgba(0,0,0,0.4);
       padding: 30px;
-      max-width: 400px;
-      margin: auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    }
-
-    h2 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      opacity: 0.9;
-      margin-bottom: 20px;
+      border-radius: 15px;
+      width: 320px;
+      text-align: center;
     }
 
     button {
-      background: #1abc9c;
+      background: #16a34a;
+      color: white;
       border: none;
-      padding: 12px 25px;
+      padding: 12px 20px;
       font-size: 16px;
-      border-radius: 25px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: 0.3s;
+      margin-top: 15px;
     }
 
     button:hover {
-      background: #16a085;
-      transform: scale(1.05);
+      background: #15803d;
     }
 
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      opacity: 0.7;
+    .form {
+      display: none;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    ⚽ E-Football Tournament
-  </header>
+  <div class="card">
+    <h2>👋 مرحبا بك</h2>
+    <p>سجّل اللاعبين و نظم بطولات eFootball</p>
 
-  <div class="container">
-    <div class="card">
-      <h2>مرحبا بيك 👋</h2>
-      <p>
-        هذا موقع لإدارة بطولات eFootball  
-        تسجيل اللاعبين، تنظيم المباريات، وتتبع النتائج
-      </p>
-      <button onclick="alert('قريباً سيتم فتح التسجيل')">
-        تسجيل الآن
-      </button>
+    <button onclick="showForm()">سجّل الآن</button>
+
+    <div class="form" id="registerForm">
+      <input type="text" placeholder="اسم اللاعب">
+      <input type="text" placeholder="اسم الفريق">
+      <input type="text" placeholder="رقم الهاتف">
+      <button onclick="submitForm()">إرسال</button>
     </div>
   </div>
 
-  <footer>
-    © 2025 - E-Football Tournament
-  </footer>
+  <script>
+    function showForm() {
+      document.getElementById("registerForm").style.display = "block";
+    }
+
+    function submitForm() {
+      alert("✅ تم التسجيل بنجاح");
+    }
+  </script>
 
 </body>
 </html>
