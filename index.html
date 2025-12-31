@@ -1,46 +1,60 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-<meta charset="UTF-8">
-<title>تسجيل البطولة</title>
-<style>
-body {
-  background:#0f172a;
-  color:white;
-  font-family:Arial;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-}
-.card {
-  background:#020617;
-  padding:25px;
-  border-radius:12px;
-  width:300px;
-}
-input {
-  width:100%;
-  margin:8px 0;
-  padding:10px;
-  border-radius:8px;
-  border:none;
-}
-button {
-  width:100%;
-  padding:12px;
-  background:#22c55e;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  cursor:pointer;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>E-Football Tournament</title>
+  <style>
+    body {
+      background: #0f172a;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #111827;
+      padding: 30px;
+      border-radius: 12px;
+      width: 350px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      background: #16a34a;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #15803d;
+    }
+  </style>
 </head>
 
 <body>
-<div class="card">
-  <h3>تسجيل اللاعبين</h3>
-  <input id="player" placeholder="اسم اللاعب">
-  <input id="team" placeholder="الفريق">
-  <input i
+  <div class="card">
+    <h2>👋 مرحبا بك</h2>
+    <p>تسجيل اللاعبين في بطولة eFootball</p>
+
+    <form action="dashboard.html">
+      <input type="text" placeholder="اسم اللاعب" required>
+      <input type="text" placeholder="اسم الفريق" required>
+      <input type="number" placeholder="العمر" required>
+
+      <button type="submit">تسجيل الآن</button>
+    </form>
+  </div>
+</body>
+</html>
