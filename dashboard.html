@@ -5,40 +5,77 @@
   <title>لوحة التحكم</title>
   <style>
     body {
-      background: #020617;
-      color: white;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    h2 {
-      color: #22c55e;
+      background:#020617;
+      color:white;
+      font-family:Arial;
+      padding:20px;
     }
     .box {
-      background: #111827;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
+      background:#111827;
+      padding:20px;
+      margin-bottom:20px;
+      border-radius:10px;
+    }
+    h2 { color:#22c55e; }
+    button {
+      background:#dc2626;
+      border:none;
+      padding:10px;
+      border-radius:6px;
+      color:white;
+      cursor:pointer;
     }
   </style>
 </head>
 
 <body>
-  <h1>🏆 لوحة التحكم</h1>
 
-  <div class="box">
-    <h2>👥 اللاعبون</h2>
-    <p>سيتم عرض اللاعبين هنا</p>
-  </div>
+<h1>🏆 لوحة التحكم</h1>
 
-  <div class="box">
-    <h2>⚽ المباريات</h2>
-    <p>سيتم عرض المباريات هنا</p>
-  </div>
+<div class="box">
+  <h2>👤 اللاعب الحالي</h2>
+  <p id="playerInfo"></p>
+  <button onclick="logout()">تسجيل الخروج</button>
+</div>
 
-  <div class="box">
-    <h2>📊 الترتيب</h2>
-    <p>سيتم عرض الترتيب هنا</p>
-  </div>
+<div class="box">
+  <h2>👥 كل اللاعبين</h2>
+  <ul id="playersList"></ul>
+</div>
+
+<div class="box">
+  <h2>⚽ المباريات</h2>
+  <p>قريبا...</p>
+</div>
+
+<div class="box">
+  <h2>📊 الترتيب</h2>
+  <p>قريبا...</p>
+</div>
+
+<script>
+const currentPlayer = JSON.parse(localStorage.getItem("currentPlayer"));
+if (!currentPlayer) {
+  window.location.href = "index.html";
+}
+
+document.getElementById("playerInfo").innerText =
+  "الاسم: " + currentPlayer.name + " | الكود: " + currentPlayer.code;
+
+const players = JSON.parse(localStorage.getItem("players")) || [];
+const list = document.getElementById("playersList");
+
+players.forEach(p => {
+  const li = document.createElement("li");
+  li.innerText = p.name + " (" + p.code + ")";
+  list.appendChild(li);
+});
+
+function logout() {
+  localStorage.removeItem("currentPlayer");
+  window.location.href = "index.html";
+}
+</script>
 
 </body>
 </html>
