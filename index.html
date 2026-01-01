@@ -1,81 +1,54 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <title>لوحة التحكم</title>
-  <style>
-    body {
-      background:#020617;
-      color:white;
-      font-family:Arial;
-      padding:20px;
-    }
-    .box {
-      background:#111827;
-      padding:20px;
-      margin-bottom:20px;
-      border-radius:10px;
-    }
-    h2 { color:#22c55e; }
-    button {
-      background:#dc2626;
-      border:none;
-      padding:10px;
-      border-radius:6px;
-      color:white;
-      cursor:pointer;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>E-Football Login</title>
+<style>
+body{background:#020617;color:white;font-family:Arial;display:flex;justify-content:center;align-items:center;height:100vh}
+.box{background:#111827;padding:30px;border-radius:12px;width:360px;text-align:center}
+input,button{width:100%;padding:10px;margin:6px;border-radius:6px;border:none}
+button{background:#16a34a;color:white;font-size:16px;cursor:pointer}
+</style>
 </head>
-
 <body>
 
-<h1>🏆 لوحة التحكم</h1>
-
 <div class="box">
-  <h2>👤 اللاعب الحالي</h2>
-  <p id="playerInfo"></p>
-  <button onclick="logout()">تسجيل الخروج</button>
-</div>
+<h2>تسجيل لاعب</h2>
+<input id="name" placeholder="اسم اللاعب">
+<input id="code" placeholder="كود اللاعب">
+<input id="pass" type="password" placeholder="كلمة السر">
+<button onclick="register()">تسجيل</button>
 
-<div class="box">
-  <h2>👥 كل اللاعبين</h2>
-  <ul id="playersList"></ul>
-</div>
+<hr>
 
-<div class="box">
-  <h2>⚽ المباريات</h2>
-  <p>قريبا...</p>
-</div>
-
-<div class="box">
-  <h2>📊 الترتيب</h2>
-  <p>قريبا...</p>
+<h2>دخول</h2>
+<input id="lcode" placeholder="الكود">
+<input id="lpass" type="password" placeholder="كلمة السر">
+<button onclick="login()">دخول</button>
 </div>
 
 <script>
-const currentPlayer = JSON.parse(localStorage.getItem("currentPlayer"));
-if (!currentPlayer) {
-  window.location.href = "index.html";
+function register(){
+let players=JSON.parse(localStorage.getItem("players"))||[];
+let name=name=document.getElementById("name").value;
+let code=document.getElementById("code").value;
+let pass=document.getElementById("pass").value;
+if(!name||!code||!pass)return alert("عمر الخانات");
+if(players.find(p=>p.code==code))return alert("كود مستعمل");
+players.push({name,code,pass,points:0});
+localStorage.setItem("players",JSON.stringify(players));
+alert("تم التسجيل");
 }
 
-document.getElementById("playerInfo").innerText =
-  "الاسم: " + currentPlayer.name + " | الكود: " + currentPlayer.code;
-
-const players = JSON.parse(localStorage.getItem("players")) || [];
-const list = document.getElementById("playersList");
-
-players.forEach(p => {
-  const li = document.createElement("li");
-  li.innerText = p.name + " (" + p.code + ")";
-  list.appendChild(li);
-});
-
-function logout() {
-  localStorage.removeItem("currentPlayer");
-  window.location.href = "index.html";
+function login(){
+let c=lcode.value,p=lpass.value;
+if(c=="ADMIN" && p=="1234"){location.href="admin.html";return;}
+let players=JSON.parse(localStorage.getItem("players"))||[];
+let pl=players.find(x=>x.code==c && x.pass==p);
+if(!pl)return alert("خطأ");
+localStorage.setItem("current",JSON.stringify(pl));
+location.href="dashboard.html";
 }
 </script>
-
 </body>
 </html>
