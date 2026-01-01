@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<style>
+body{background:#020617;color:white;font-family:Arial;padding:20px}
+.box{background:#111827;padding:15px;border-radius:10px;margin-bottom:20px}
+button{padding:10px;border:none;border-radius:6px;background:#22c55e;color:white;cursor:pointer}
+</style>
+</head>
+<body>
 
+<h1>لوحة تحكم ADMIN</h1>
+
+<div class="box">
+<h2>👥 اللاعبين</h2>
+<ul id="players"></ul>
+</div>
+
+<div class="box">
+<h2>⚽ توليد مباريات</h2>
+<button onclick="generate()">توليد مباريات تلقائيا</button>
+<ul id="matches"></ul>
+</div>
+
+<div class="box">
+<h2>📊 الترتيب</h2>
+<ul id="ranking"></ul>
+</div>
+
+<script>
+let players=JSON.parse(localStorage.getItem("players"))||[];
+let matches=[];
+
+players.forEach(p=>{
+let li=document.createElement("li");
+li.textContent=p.name+" | نقاط: "+p.points;
+playersList.appendChild(li);
+});
+
+function generate(){
+matches=[];
+for(let i=0;i<players.length;i+=2){
+if(players[i+1]){
+let p1=players[i],p2=players[i+1];
+let r1=Math.floor(Math.random()*5);
+let r2=Math.floor(Math.random()*5);
+if(r1>r2)p1.points+=3;
+else if(r2>r1)p2.points+=3;
+else{p1.points+=1;p2.points+=1;}
+matches.push(${p1.name} ${r1} - ${r2} ${p2.name});
+}}
+localStorage.setItem("players",JSON.stringify(players));
+show();
+}
+
+function show(){
+document.getElementById("matches").innerHTML="";
+matches.forEach(m=>{
+let li=document.createElement("li");
+li.textContent=m;
+matches.appendChild(li);
+});
+players.sort((a,b)=>b.points-a.points);
+document.getElementById("ranking").innerHTML="";
+players.forEach(p=>{
+let li=document.createElement("li");
+li.textContent=p.name+" - "+p.points+" pts";
+ranking.appendChild(li);
+});
+}
+</script>
+
+</body>
+</html>
+Envoyé
+Écrire à
